@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script>
+        function valid(event) { 
+            event.preventDefault(); 
+            var u = document.getElementById("username").value;
+             var p = document.getElementById("password").value; 
+             var cp = document.getElementById("conpassword").value; 
+             var m = document.getElementById("Mnum").value; 
+             if (u === "" || u.length < 6) { 
+                alert("Please enter a valid username (at least 6 characters).");
+                 return false; 
+             } 
+             if (p === "" || p.length < 8 || !containsUpperCase(p)) { 
+                alert("Please enter a valid password (at least 8 characters with at least one uppercase letter)."); 
+                return false; 
+             } 
+             if (cp === "" || cp.length < 8) {
+                alert("Please enter a valid confirm password (at least 8 characters)."); 
+                return false; 
+             } 
+             if (p !== cp) { 
+                alert("Password and confirm password should be the same."); 
+                return false; 
+             } 
+             if (!isValidMobileNumber(m)) { 
+                alert("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9."); 
+                return false; 
+             } 
+             alert("Registration successful!");
+             window.location.href = 'login.html';
+             return true; 
+        }
+        function containsUpperCase(str) { 
+            for (var i = 0; i < str.length; i++) { 
+                if (str[i] >= 'A' && str[i] <= 'Z') { 
+                    return true; 
+                } 
+            } 
+            return false; 
+        }
+        function isValidMobileNumber(num) { 
+            if (num.length !== 10) { 
+                return false; 
+            } 
+            var firstDigit = num.charAt(0); 
+            return (firstDigit === '6' || firstDigit === '7' || firstDigit === '8' || firstDigit === '9'); 
+        }
+    </script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='registration.css'>
+</head>
+<body>
+    <h1 id="h1">Registration</h1>
+    <div class="outerdiv">
+    <form>
+        <label id="regis" for="username"> Username </label>
+        <input class="super" type="text" id="username">
+        <label id="regis" for="password"> Password </label>
+        <input class="super" type="password" id="password">
+        <label id="regis" for="conpassword"> Confirm Password </label>
+        <input class="super" type="password" id="conpassword">
+        <label id="regis" for="email"> E-mail </label>
+        <input class="super" type="email" id="password">
+        <label id="regis" for="Mnum"> Mobile Number </label>
+        <input class="super" type="number" id="Mnum">
+        <label id="regis" for="dob"> Date Of Birth </label>
+        <input class="super" type="date" id="dob">
+        <label id="regis" for="Address"> Address </label>
+        <input class="big" type="Address" id="Address">
+        <label for="Gender">Gender</label>
+        <select  id="Gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+        </select>
+    </form>
+    <form action="login.html">
+        <button type="submit" class="buton" onclick="valid(event)">
+            SUBMIT
+        </button>
+    </form>
+</div>
+</body>
+</html>
