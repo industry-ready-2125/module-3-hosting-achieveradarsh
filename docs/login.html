@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script>
+        function upper(p) { 
+            var upperCount = 0; 
+            for (var i = 0; i < p.length; i++) { 
+                if (p[i] >= 'A' && p[i] <= 'Z') { 
+                    upperCount++; 
+                }
+                return upperCount > 0; 
+            }
+        }
+        function valid(event) { 
+            event.preventDefault(); 
+            var u = document.getElementById("username").value; 
+            var p = document.getElementById("password").value; 
+            if (u === "" || u.length < 6) { 
+                alert("Please enter a valid username (at least 6 characters)."); 
+                return false; 
+            } 
+            if (p === "" || p.length < 8 || !upper(p)) { 
+                alert("Please enter a valid password (at least 8 characters with at least one uppercase letter)."); 
+                return false; 
+            } 
+            alert("Login successful!"); 
+            return true; 
+        }
+    </script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='login.css'>
+</head>
+<body>
+    <h1>LOGIN </h1>
+    <form id="form1">
+        <label id="User" for="username">Username:</label>
+        <input type="text" id="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+    </form>
+    <br>
+    <form action="registration.html" id="form2">
+        <div class="forget">
+            <a href="">Forgot Password?</a>
+            <button>SignUp</button>
+        </div>
+    </form>
+    <br>
+    <form action="right.html">
+        <button type="submit" class="button" onclick="valid(event)">
+            SUBMIT
+        </button>
+    </form>
+</body>
+</html>
